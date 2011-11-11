@@ -53,6 +53,19 @@ describe Parsr::HashRule do
       result.value.should be == {1 => 2, 3 => 4}
     end
 
+    it 'should support Ruby 1.9 hash syntax' do
+      values = [1, 2, 4]
+
+      result = match("{1 => 2, foo: 4}") do |scanner|
+        val = values.shift
+        scanner.scan(/\s*/)
+        scanner.scan(Regexp.new(val.inspect))
+        Parsr::Token.new(val) if val
+      end
+      
+      result.value.should be == {1 => 2, :foo => 4}
+    end
+
   end
 
 end
