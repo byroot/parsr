@@ -1,3 +1,3 @@
-module Parsr
+class Parsr
   VERSION = "0.0.1"
 end
