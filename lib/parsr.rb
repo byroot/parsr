@@ -4,6 +4,7 @@ class Parsr
 
   BASE_PATH = File.expand_path(File.join(File.dirname(__FILE__), 'parsr'))
 
+  autoload :ArrayRule,      File.join(BASE_PATH, 'array_rule')
   autoload :FloatRule,      File.join(BASE_PATH, 'float_rule')
   autoload :IntegerRule,    File.join(BASE_PATH, 'integer_rule')
   autoload :RawStringRule,  File.join(BASE_PATH, 'raw_string_rule')
