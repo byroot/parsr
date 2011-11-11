@@ -6,6 +6,7 @@ class Parsr
 
   autoload :FloatRule,      File.join(BASE_PATH, 'float_rule')
   autoload :IntegerRule,    File.join(BASE_PATH, 'integer_rule')
+  autoload :RawStringRule,  File.join(BASE_PATH, 'raw_string_rule')
   autoload :Token,          File.join(BASE_PATH, 'token')
   autoload :VERSION,        File.join(BASE_PATH, 'version')
 
