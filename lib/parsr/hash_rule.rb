@@ -19,7 +19,6 @@ module Parsr::HashRule
     end
 
     def parse_pair(scanner, key=nil)
-      p key
       unless key.is_a?(Parsr::Token)
         if scanner.scan(/[a-zA-Z_][0-9a-zA-Z_]*\:/)
           key = Parsr::Token.new(scanner.matched.chomp(':').to_sym)
