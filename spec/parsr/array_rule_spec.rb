@@ -61,6 +61,19 @@ describe Parsr::ArrayRule do
       result.value.should be == [1, 2, 3 => 4, 5 => 6]
     end
 
+    it 'should be able to parse a final unenclosed Ruby1.9 Hash' do
+      values = [6, 5, 4, 2, 1]
+
+      result = match("[1, 2, foo: 4, 5=>6]") do |scanner|
+        val = values.pop
+        scanner.scan(/\s*/)
+        scanner.scan(Regexp.new(val.to_s))
+        Parsr::Token.new(val) if val
+      end
+      
+      result.value.should be == [1, 2, :foo => 4, 5 => 6]
+    end
+
   end
 
 end
