@@ -1,7 +1,10 @@
+require 'strscan'
+
 class Parsr
 
   BASE_PATH = File.expand_path(File.join(File.dirname(__FILE__), 'parsr'))
 
+  autoload :FloatRule,      File.join(BASE_PATH, 'float_rule')
   autoload :IntegerRule,    File.join(BASE_PATH, 'integer_rule')
   autoload :Token,          File.join(BASE_PATH, 'token')
   autoload :VERSION,        File.join(BASE_PATH, 'version')
