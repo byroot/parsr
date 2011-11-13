@@ -30,7 +30,6 @@ module Parsr::HashRule
       end
       value = yield
       raise MissingValue unless value && value.is_a?(Parsr::Token)
-      p [key, value].map(&:value)
       [key, value].map(&:value)
     end
 

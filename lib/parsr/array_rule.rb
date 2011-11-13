@@ -32,11 +32,7 @@ module Parsr::ArrayRule
       while pair = Parsr::HashRule.parse_pair(scanner, token, &block)
         token = nil
         hash << pair
-        unless scanner.scan(/\s*\,\s*/)
-          p scanner.rest
-          puts 'break'
-          break
-        end
+        break unless scanner.scan(/\s*\,\s*/)
       end
       Hash[hash]
     end
