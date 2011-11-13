@@ -41,7 +41,7 @@ describe Parsr do
     it 'should be able to parse some complexes literals' do
       Parsr::safe_literal_eval(%q{
         [1, "2", foo: {egg: 'spam', 'bar,' => 'plop'}, 3 => 4.2]
-      }).should be == [1, "2", foo: {egg: 'spam', 'bar,' => 'plop'}, 3 => 4.2]
+      }).should be == [1, "2", {:foo => {:egg => 'spam', 'bar,' => 'plop'}, 3 => 4.2}]
     end
 
     it 'should be able to parse an array included in another array' do

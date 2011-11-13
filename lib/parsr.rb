@@ -54,7 +54,7 @@ class Parsr
         FloatRule,
         IntegerRule,
         RawStringRule,
-        StringRule,
+        StringRule
       )
       @safe_eval_parser.parse(string)
     end

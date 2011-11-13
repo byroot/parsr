@@ -54,7 +54,7 @@ describe Parsr::ArrayRule do
         Parsr::Token.new(val) if val
       end
       
-      result.value.should be == [1, 2, 3 => 4, 5 => 6]
+      result.value.should be == [1, 2, {3 => 4, 5 => 6}]
     end
 
     it 'should be able to parse a final unenclosed Ruby1.9 Hash' do
@@ -67,7 +67,7 @@ describe Parsr::ArrayRule do
         Parsr::Token.new(val) if val
       end
       
-      result.value.should be == [1, 2, :foo => 4, 5 => 6]
+      result.value.should be == [1, 2, {:foo => 4, 5 => 6}]
     end
 
   end
