@@ -1,9 +1,11 @@
 module Parsr::SymbolRule
 
+  PATTERN = /\:[a-zA-Z_][0-9a-zA-Z_]*/
+
   class << self
 
     def match(scanner)
-      if scanner.scan(/\:[a-zA-Z_][0-9a-zA-Z_]*/)
+      if scanner.scan(PATTERN)
         Parsr::Token.new(scanner.matched[1..-1].to_sym)
       end
     end
