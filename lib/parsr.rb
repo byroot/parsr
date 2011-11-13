@@ -16,6 +16,22 @@ class Parsr
   Error = Class.new(Exception)
   IllegalValue = Class.new(Error)
 
+  class << self
+
+    def safe_literal_eval(string)
+      @safe_eval_parser ||= self.new(
+        ArrayRule,
+        HashRule,
+        FloatRule,
+        IntegerRule,
+        RawStringRule,
+        StringRule,
+      )
+      @safe_eval_parser.parse(string)
+    end
+
+  end
+
   attr_accessor :rules
 
   def initialize(*rules)

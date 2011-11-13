@@ -7,7 +7,7 @@ module Parsr::ArrayRule
     def match(scanner, &block)
       if scanner.scan(/\[\s*/)
         array = []
-        until scanner.scan(/\s*\]/)
+        begin
           if scanner.scan(/[a-zA-Z_][0-9a-zA-Z_]*\:/)
             token = Parsr::Token.new(scanner.matched.chomp(':').to_sym)
             array << parse_unclosed_hash(scanner, token, &block)
@@ -21,8 +21,8 @@ module Parsr::ArrayRule
           end
           
           array << token.value if token.is_a?(Parsr::Token)
-          break unless scanner.scan(/\s*,\s*/)
-        end
+        end while scanner.scan(/\s*,\s*/)
+        raise Unterminated unless scanner.scan(/\s*\]/)
         Parsr::Token.new(array)
       end
     end
