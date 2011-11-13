@@ -1,10 +1,7 @@
 require 'spec_helper'
 
 describe Parsr::SymbolRule do
-
-  def match(string)
-    described_class.match(StringScanner.new(string))
-  end
+  include_context 'rule'
 
   it 'should match identifiers' do
     match(':_').value.should be == :_
@@ -16,6 +13,5 @@ describe Parsr::SymbolRule do
     match(':42').should be_nil
     match(':-').should be_nil
   end
-
 
 end

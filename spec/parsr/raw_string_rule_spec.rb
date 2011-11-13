@@ -2,10 +2,7 @@
 require 'spec_helper'
 
 describe Parsr::RawStringRule do
-
-  def match(string)
-    described_class.match(StringScanner.new(string))
-  end
+  include_context 'rule'
 
   describe '.match' do
 

@@ -1,11 +1,7 @@
 require 'spec_helper'
 
 describe Parsr::HashRule do
-
-  def match(string)
-    scanner = StringScanner.new(string)
-    described_class.match(scanner) { yield scanner if block_given? }
-  end
+  include_context 'rule'
 
   describe '.match' do
 
