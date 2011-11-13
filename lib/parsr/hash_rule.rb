@@ -1,8 +1,16 @@
 module Parsr::HashRule
 
-  MissingSeparator = Class.new(Parsr::Error)
-  MissingValue = Class.new(Parsr::Error)
-  Unterminated = Class.new(Parsr::Error)
+  class MissingValue < Parsr::SyntaxError
+    message "unexpected '%{rest}'"
+  end
+
+  class MissingSeparator < Parsr::SyntaxError
+    message "unexpected '%{rest}', expecting '=>'"
+  end
+
+  class Unterminated < Parsr::SyntaxError
+    message "unexpected '%{rest}', expecting '}'"
+  end
 
   class << self
 
@@ -13,7 +21,7 @@ module Parsr::HashRule
           hash << pair
           break unless scanner.scan(/\s*\,\s*/)
         end
-        raise Unterminated unless scanner.scan(/\s*\}\s*/)
+        raise Unterminated.new(scanner) unless scanner.scan(/\s*\}\s*/)
         Parsr::Token.new(Hash[hash])
       end
     end
@@ -23,13 +31,13 @@ module Parsr::HashRule
         if scanner.scan(/[a-zA-Z_][0-9a-zA-Z_]*\:/)
           key = Parsr::Token.new(scanner.matched.chomp(':').to_sym)
         elsif key = yield and key.is_a?(Parsr::Token)
-          raise MissingSeparator unless scanner.scan(/\s*=>\s*/)
+          raise MissingSeparator.new(scanner) unless scanner.scan(/\s*=>\s*/)
         else
           return false
         end
       end
       value = yield
-      raise MissingValue unless value && value.is_a?(Parsr::Token)
+      raise MissingValue.new(scanner) unless value && value.is_a?(Parsr::Token)
       [key, value].map(&:value)
     end
 

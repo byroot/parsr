@@ -1,6 +1,8 @@
 module Parsr::ArrayRule
 
-  Unterminated = Class.new(Parsr::Error)
+  class Unterminated < Parsr::SyntaxError
+    message "unexpected '%{rest}', expecting ']'"
+  end
 
   class << self
 
@@ -22,7 +24,7 @@ module Parsr::ArrayRule
           
           array << token.value if token.is_a?(Parsr::Token)
         end while scanner.scan(/\s*,\s*/)
-        raise Unterminated unless scanner.scan(/\s*\]/)
+        raise Unterminated.new(scanner) unless scanner.scan(/\s*\]/)
         Parsr::Token.new(array)
       end
     end

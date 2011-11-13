@@ -17,6 +17,33 @@ class Parsr
   Error = Class.new(Exception)
   IllegalValue = Class.new(Error)
 
+  class SyntaxError < Error
+
+    attr_reader :scanner
+
+    def self.message(message=nil)
+      @message = "Syntax error, #{message}" if message
+      @message
+    end
+
+    def initialize(scanner)
+      @scanner = scanner
+      super(self.class.message % context)
+    end
+
+    protected
+    def context
+      if scanner.eos? || scanner.rest =~ /^\s*$/
+        rest = 'end of string'
+       else
+         scanner.rest.scan(/^\s*([^\s])/)
+         rest = $1
+       end
+      {:rest => rest}
+    end
+
+  end
+
   class << self
 
     def safe_literal_eval(string)

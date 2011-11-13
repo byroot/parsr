@@ -1,6 +1,8 @@
 module Parsr::RawStringRule
 
-  Unterminated = Class.new(Parsr::Error)
+  class Unterminated < Parsr::SyntaxError
+    message 'unterminated string meets end of file'
+  end
 
   class << self
 
@@ -10,7 +12,7 @@ module Parsr::RawStringRule
         while chunk = (parse_content(scanner) || parse_escape(scanner))
           buffer << chunk
         end
-        raise Unterminated.new("'" << buffer) unless terminated?(scanner)
+        raise Unterminated.new(scanner) unless terminated?(scanner)
         return Parsr::Token.new(buffer)
       end
       nil
