@@ -4,33 +4,31 @@ class Parsr
 
   BASE_PATH = File.expand_path(File.join(File.dirname(__FILE__), 'parsr'))
 
-  autoload :ArrayRule,      File.join(BASE_PATH, 'array_rule')
-  autoload :FloatRule,      File.join(BASE_PATH, 'float_rule')
-  autoload :HashRule,       File.join(BASE_PATH, 'hash_rule')
-  autoload :IntegerRule,    File.join(BASE_PATH, 'integer_rule')
-  autoload :RawStringRule,  File.join(BASE_PATH, 'raw_string_rule')
-  autoload :StringRule,     File.join(BASE_PATH, 'string_rule')
-  autoload :SymbolRule,     File.join(BASE_PATH, 'symbol_rule')
-  autoload :Token,          File.join(BASE_PATH, 'token')
-  autoload :VERSION,        File.join(BASE_PATH, 'version')
+  autoload :ArrayRule,      "#{BASE_PATH}/array_rule"
+  autoload :FloatRule,      "#{BASE_PATH}/float_rule"
+  autoload :HashRule,       "#{BASE_PATH}/hash_rule"
+  autoload :IntegerRule,    "#{BASE_PATH}/integer_rule"
+  autoload :RawStringRule,  "#{BASE_PATH}/raw_string_rule"
+  autoload :StringRule,     "#{BASE_PATH}/string_rule"
+  autoload :SymbolRule,     "#{BASE_PATH}/symbol_rule"
+  autoload :Token,          "#{BASE_PATH}/token"
+  autoload :VERSION,        "#{BASE_PATH}/version"
 
   Error = Class.new(Exception)
   IllegalValue = Class.new(Error)
 
-  RUBY_LITERALS_RULES = [
-    ArrayRule,
-    HashRule,
-    SymbolRule,
-    FloatRule,
-    IntegerRule,
-    RawStringRule,
-    StringRule,
-  ]
-
   class << self
 
     def safe_literal_eval(string)
-      @safe_eval_parser ||= self.new(RUBY_LITERALS_RULES)
+      @safe_eval_parser ||= self.new(
+        ArrayRule,
+        HashRule,
+        SymbolRule,
+        FloatRule,
+        IntegerRule,
+        RawStringRule,
+        StringRule,
+      )
       @safe_eval_parser.parse(string)
     end
 
