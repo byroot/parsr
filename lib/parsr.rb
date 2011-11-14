@@ -5,6 +5,7 @@ class Parsr
   BASE_PATH = File.expand_path(File.join(File.dirname(__FILE__), 'parsr'))
 
   autoload :ArrayRule,      "#{BASE_PATH}/array_rule"
+  autoload :ConstantsRule,  "#{BASE_PATH}/constants_rule"
   autoload :FloatRule,      "#{BASE_PATH}/float_rule"
   autoload :HashRule,       "#{BASE_PATH}/hash_rule"
   autoload :IntegerRule,    "#{BASE_PATH}/integer_rule"
@@ -50,6 +51,7 @@ class Parsr
       @safe_eval_parser ||= self.new(
         ArrayRule,
         HashRule,
+        ConstantsRule,
         SymbolRule,
         FloatRule,
         IntegerRule,
