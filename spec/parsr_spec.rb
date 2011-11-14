@@ -36,16 +36,16 @@ describe Parsr do
 
   end
 
-  describe '.safe_literal_eval' do
+  describe '.literal_eval' do
 
     it 'should be able to parse some complexes literals' do
-      Parsr::safe_literal_eval(%q{
+      Parsr.literal_eval(%q{
         [1, "2", foo: {egg: 'spam', 'bar,' => true}, 3 => 4.2]
       }).should be == [1, "2", {:foo => {:egg => 'spam', 'bar,' => true}, 3 => 4.2}]
     end
 
     it 'should be able to parse an array included in another array' do
-      Parsr::safe_literal_eval(%q{
+      Parsr.literal_eval(%q{
         [1, [2], 3]
       }).should be == [1, [2], 3]
     end

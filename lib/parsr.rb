@@ -48,8 +48,8 @@ class Parsr
 
   class << self
 
-    def safe_literal_eval(string)
-      @safe_eval_parser ||= self.new(
+    def literal_eval(string)
+      @literal_parser ||= self.new(
         ArrayRule,
         HashRule,
         RangeRule,
@@ -60,7 +60,7 @@ class Parsr
         RawStringRule,
         StringRule
       )
-      @safe_eval_parser.parse(string)
+      @literal_parser.parse(string)
     end
 
   end
