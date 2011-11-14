@@ -21,18 +21,6 @@ describe Parsr::FloatRule do
       match('-42.42').value.should be == -42.42
     end
 
-    it 'should match floats with a implicit 0 unit' do
-      match('.42').value.should be == 0.42
-    end
-
-    it 'should match positive signed floats with a implicit 0 unit' do
-      match('+.42').value.should be == 0.42
-    end
-
-    it 'should match negative signed floats with a implicit 0 unit' do
-      match('-.42').value.should be == -0.42
-    end
-
   end
 
 end

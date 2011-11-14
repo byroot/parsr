@@ -1,6 +1,6 @@
 module Parsr::FloatRule
 
-  PATTERN = /[\-\+]?\d*\.\d+/
+  PATTERN = /[\-\+]?\d+\.\d+/
 
   class << self
 
