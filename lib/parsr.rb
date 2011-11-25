@@ -10,6 +10,7 @@ class Parsr
   autoload :HashRule,       "#{BASE_PATH}/hash_rule"
   autoload :IntegerRule,    "#{BASE_PATH}/integer_rule"
   autoload :RangeRule,      "#{BASE_PATH}/range_rule"
+  autoload :RegexpRule,     "#{BASE_PATH}/regexp_rule"
   autoload :RawStringRule,  "#{BASE_PATH}/raw_string_rule"
   autoload :StringRule,     "#{BASE_PATH}/string_rule"
   autoload :SymbolRule,     "#{BASE_PATH}/symbol_rule"
@@ -57,6 +58,7 @@ class Parsr
         SymbolRule,
         FloatRule,
         IntegerRule,
+        RegexpRule,
         RawStringRule,
         StringRule
       )
