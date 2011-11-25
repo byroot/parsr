@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Parsr::HashRule do
+describe Parsr::Rules::Hash do
   include_context 'rule'
 
   describe '.match' do

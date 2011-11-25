@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 require 'spec_helper'
 
-describe Parsr::StringRule do
+describe Parsr::Rules::String do
   include_context 'rule'
 
   describe '.match' do

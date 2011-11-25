@@ -1,4 +1,4 @@
-module Parsr::FloatRule
+module Parsr::Rules::Float
 
   PATTERN = /[\-\+]?\d+\.\d+/
 

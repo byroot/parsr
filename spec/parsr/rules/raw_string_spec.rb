@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 require 'spec_helper'
 
-describe Parsr::RawStringRule do
+describe Parsr::Rules::RawString do
   include_context 'rule'
 
   describe '.match' do
@@ -45,7 +45,7 @@ describe Parsr::RawStringRule do
     it 'should raise an Parsr::RawStringRule::Unterminated if raw string is not terminated' do
       expect{
         match(%q{'bryan\\'s kitchen})
-      }.to raise_error(Parsr::RawStringRule::Unterminated)
+      }.to raise_error(Parsr::Rules::RawString::Unterminated)
     end
 
   end

@@ -1,4 +1,4 @@
-module Parsr::IntegerRule
+module Parsr::Rules::Integer
 
   PATTERN = /[\-\+]?\d+/
 

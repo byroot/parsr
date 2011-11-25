@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Parsr::FloatRule do
+describe Parsr::Rules::Float do
   include_context 'rule'
 
   describe '.match' do

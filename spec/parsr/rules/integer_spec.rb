@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Parsr::IntegerRule do
+describe Parsr::Rules::Integer do
   include_context 'rule'
 
   describe '.match' do

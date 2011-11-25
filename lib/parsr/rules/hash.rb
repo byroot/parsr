@@ -1,4 +1,4 @@
-module Parsr::HashRule
+module Parsr::Rules::Hash
 
   class MissingValue < Parsr::SyntaxError
     message "unexpected '%{rest}'"

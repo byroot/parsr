@@ -1,4 +1,4 @@
-module Parsr::ConstantsRule
+module Parsr::Rules::Constants
 
   class << self
 

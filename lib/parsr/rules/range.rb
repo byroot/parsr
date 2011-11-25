@@ -1,6 +1,6 @@
-module Parsr::RangeRule
+module Parsr::Rules::Range
 
-  NUMBER_PATTERN = Regexp.union(Parsr::FloatRule::PATTERN, Parsr::IntegerRule::PATTERN)
+  NUMBER_PATTERN = Regexp.union(Parsr::Rules::Float::PATTERN, Parsr::Rules::Integer::PATTERN)
   PATTERN = /(#{NUMBER_PATTERN})(\.{2,3})(#{NUMBER_PATTERN})/
 
   class << self

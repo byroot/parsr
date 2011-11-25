@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Parsr::RangeRule do
+describe Parsr::Rules::Range do
   include_context 'rule'
 
   describe '.match' do

@@ -1,4 +1,4 @@
-module Parsr::RegexpRule
+module Parsr::Rules::Regexp
 
   OPTIONS = {
     'i' => Regexp::IGNORECASE,

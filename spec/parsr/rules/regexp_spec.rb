@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 require 'spec_helper'
 
-describe Parsr::RegexpRule do
+describe Parsr::Rules::Regexp do
   include_context 'rule'
 
   describe '.match' do
@@ -38,7 +38,7 @@ describe Parsr::RegexpRule do
     it 'should raise an Parsr::RegexpRule::Unterminated if regexp is not terminated' do
       expect{
         match(%q{/\\/})
-      }.to raise_error(Parsr::RegexpRule::Unterminated)
+      }.to raise_error(Parsr::Rules::Regexp::Unterminated)
     end
 
   end

@@ -1,4 +1,4 @@
-module Parsr::SymbolRule
+module Parsr::Rules::Symbol
 
   PATTERN = /\:[a-zA-Z_][0-9a-zA-Z_]*/
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Parsr::SymbolRule do
+describe Parsr::Rules::Symbol do
   include_context 'rule'
 
   it 'should match identifiers' do

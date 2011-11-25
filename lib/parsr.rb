@@ -3,19 +3,9 @@ require 'strscan'
 class Parsr
 
   BASE_PATH = File.expand_path(File.join(File.dirname(__FILE__), 'parsr'))
-
-  autoload :ArrayRule,      "#{BASE_PATH}/array_rule"
-  autoload :ConstantsRule,  "#{BASE_PATH}/constants_rule"
-  autoload :FloatRule,      "#{BASE_PATH}/float_rule"
-  autoload :HashRule,       "#{BASE_PATH}/hash_rule"
-  autoload :IntegerRule,    "#{BASE_PATH}/integer_rule"
-  autoload :RangeRule,      "#{BASE_PATH}/range_rule"
-  autoload :RegexpRule,     "#{BASE_PATH}/regexp_rule"
-  autoload :RawStringRule,  "#{BASE_PATH}/raw_string_rule"
-  autoload :StringRule,     "#{BASE_PATH}/string_rule"
-  autoload :SymbolRule,     "#{BASE_PATH}/symbol_rule"
-  autoload :Token,          "#{BASE_PATH}/token"
-  autoload :VERSION,        "#{BASE_PATH}/version"
+  autoload :Rules,   "#{BASE_PATH}/rules"
+  autoload :Token,   "#{BASE_PATH}/token"
+  autoload :VERSION, "#{BASE_PATH}/version"
 
   Error = Class.new(Exception)
   IllegalValue = Class.new(Error)
@@ -50,18 +40,7 @@ class Parsr
   class << self
 
     def literal_eval(string)
-      @literal_parser ||= self.new(
-        ArrayRule,
-        HashRule,
-        RangeRule,
-        ConstantsRule,
-        SymbolRule,
-        FloatRule,
-        IntegerRule,
-        RegexpRule,
-        RawStringRule,
-        StringRule
-      )
+      @literal_parser ||= self.new(*Parsr::Rules::All)
       @literal_parser.parse(string)
     end
 

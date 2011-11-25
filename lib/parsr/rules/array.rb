@@ -1,4 +1,4 @@
-module Parsr::ArrayRule
+module Parsr::Rules::Array
 
   class Unterminated < Parsr::SyntaxError
     message "unexpected '%{rest}', expecting ']'"
@@ -31,7 +31,7 @@ module Parsr::ArrayRule
 
     def parse_unclosed_hash(scanner, token, &block)
       hash = []
-      while pair = Parsr::HashRule.parse_pair(scanner, token, &block)
+      while pair = Parsr::Rules::Hash.parse_pair(scanner, token, &block)
         token = nil
         hash << pair
         break unless scanner.scan(/\s*\,\s*/)
