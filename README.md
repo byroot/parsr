@@ -6,5 +6,7 @@ just as Python's [ast.literal_eval](http://docs.python.org/library/ast.html#ast.
 ## Example
 
 ```ruby
-Parsr.literal_eval(%q{ [1, "2", 3.4 => 5..6, foo: [7] ] })
+Parsr.literal_eval(%q{ [1, "2", 3.4 => 5..6, foo: [7, bar: /(bb|[^b]{2})/ix] ] })
 ```
+
+[![Build Status](https://secure.travis-ci.org/byroot/parsr.png)](http://travis-ci.org/byroot/parsr)
