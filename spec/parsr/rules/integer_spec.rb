@@ -32,6 +32,17 @@ describe Parsr::Rules::Integer do
       result.should_not be_a(Parsr::Token)
     end
 
+    it 'should match integers with containing an underscore for clarity' do
+      result = match('1_000')
+      result.should be_a Parsr::Token
+      result.value.should be == 1_000
+    end
+
+    it 'should not match integers with underscore prefix' do
+      result = match('_1_000')
+      result.should be_nil
+    end
+
   end
 
 end

@@ -6,6 +6,7 @@ module Parsr::Rules
   autoload :Float,      "#{BASE_PATH}/float"
   autoload :Hash,       "#{BASE_PATH}/hash"
   autoload :Integer,    "#{BASE_PATH}/integer"
+  autoload :Numeric,    "#{BASE_PATH}/numeric"
   autoload :Range,      "#{BASE_PATH}/range"
   autoload :Regexp,     "#{BASE_PATH}/regexp"
   autoload :RawString,  "#{BASE_PATH}/raw_string"

@@ -1,6 +1,7 @@
 module Parsr::Rules::Float
+  include Parsr::Rules::Numeric
 
-  PATTERN = /[\-\+]?\d+\.\d+/
+  PATTERN = /#{SIGN}#{DIGITS}\.#{DIGITS}/
 
   class << self
 

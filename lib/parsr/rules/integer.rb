@@ -1,6 +1,7 @@
 module Parsr::Rules::Integer
+  include Parsr::Rules::Numeric
 
-  PATTERN = /[\-\+]?\d+/
+  PATTERN = /#{SIGN}#{DIGITS}/
 
   class << self
 
